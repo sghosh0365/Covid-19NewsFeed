@@ -17,7 +17,7 @@ coverpic_li = ['Covid-19CoverPagePic-1.jpg', 'Covid-19CoverPagePic-2.jpg', 'Covi
 search_loc_li=['Pune','Kolkata','Bangalore']
 generate_maps_1()
 generate_maps_2()
-#time.sleep(10)
+
 
 more_stories_filename = "GoogleCovid-19MoreStories.html"
 Issue_counter_filename = "GoogleCovid-19NewsLetterIssue.txt"
