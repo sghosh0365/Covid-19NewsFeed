@@ -6,8 +6,7 @@ from email import encoders
 import datetime
 
 def send_email():
-    li = [{'name': "Test", 'email': "test@email.com", 'location':'Test'}]
-
+    li = [{'name': "Test", 'email': "test@email.com", 'location':'Test'}]  ## Specify the list of user name, email and the local news location of the recipients as a list of dicts
     currentTime = datetime.datetime.now()
     currentTime.hour
     if currentTime.hour < 12:
@@ -17,7 +16,7 @@ def send_email():
     else:
         greeting = 'Good evening!'
     for dest in li:
-        fromaddr = "test@email.com"
+        fromaddr = "test@email.com" ## Sender address
         location = dest['location']
         # instance of MIMEMultipart
         msg = MIMEMultipart()
@@ -36,7 +35,7 @@ def send_email():
 
         # open the file to be sent
         filename = "COVID-19NewsLetter.pdf"
-        attachment = open(f"C:\\Users\\TSG\\PycharmProjects\\NewsFeed\\venv\\COVID-19NewsLetter_{location}.pdf", "rb")
+        attachment = open(f"C:\\Users\\TSG\\PycharmProjects\\NewsFeed\\venv\\COVID-19NewsLetter_{location}.pdf", "rb") ## Specify the path of the pdf
 
         # instance of MIMEBase and named as p
         p = MIMEBase('application', 'octet-stream')
@@ -66,7 +65,7 @@ def send_email():
         # start TLS for security
         s.starttls()
         # s.starttls()
-        s.login("Test", "<password>")
+        s.login("Test", "<password>") ## Provide login credentials of the sender email
         s.sendmail(fromaddr, to_email, text)
         s.quit()
     print('Completed execution of Covid-19NewsSendEmail.py')
