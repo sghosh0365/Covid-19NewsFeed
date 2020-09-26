@@ -18,7 +18,7 @@ search_loc_li=['Pune','Kolkata','Bangalore']
 generate_maps_1()
 generate_maps_2()
 
-
+issue_counter_flg=0
 more_stories_filename = "GoogleCovid-19MoreStories.html"
 Issue_counter_filename = "GoogleCovid-19NewsLetterIssue.txt"
 numbers_filename = "GoogleCovid-19Numbers.html"
@@ -30,20 +30,21 @@ for loc in search_loc_li:
         os.remove(more_stories_filename)
     if os.path.exists(numbers_filename):
         os.remove(numbers_filename)
-    if os.path.exists(Issue_counter_filename):
-        f_issue = open(Issue_counter_filename, "r")
-        var_issue_counter = int(f_issue.readline())
-        f_issue.close()
-        var_issue_counter += 1
-        f_issue = open(Issue_counter_filename, "w")
-        f_issue.write(str(var_issue_counter))
-        f_issue.close()
-    else:
-        var_issue_counter = 1
-        f_issue = open(Issue_counter_filename, "w")
-        f_issue.write(str(var_issue_counter))
-        f_issue.close()
-
+	if issue_counter_flg == 0:
+		if os.path.exists(Issue_counter_filename):
+			f_issue = open(Issue_counter_filename, "r")
+			var_issue_counter = int(f_issue.readline())
+			f_issue.close()
+			var_issue_counter += 1
+			f_issue = open(Issue_counter_filename, "w")
+			f_issue.write(str(var_issue_counter))
+			f_issue.close()
+		else:
+			var_issue_counter = 1
+			f_issue = open(Issue_counter_filename, "w")
+			f_issue.write(str(var_issue_counter))
+			f_issue.close()
+			issue_counter_flg=1
     today = date.today()
     issue_date = today.strftime("%B %d %Y")
     gn = GoogleNews(lang='en', country='IN')
