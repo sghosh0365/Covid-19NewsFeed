@@ -20,7 +20,6 @@ def generate_maps_1():
             autocolorscale=False,
             marker_line_color='darkgray',
             marker_line_width=0.5,
-            # reversescale=True,
             locations=df['Country'],
             locationmode="country names",
             z=df['NewConfirmed'],
@@ -28,8 +27,8 @@ def generate_maps_1():
             colorbar={'title': 'New confirmed cases'},
         )
 
-        layout = dict(  # title='Covid-19 New confirmed cases',
-            geo=dict(showframe=False, projection={'type': 'mercator'})  # , margin={"r": 0, "t": 0, "l": 0, "b": 0}
+        layout = dict(
+            geo=dict(showframe=False, projection={'type': 'mercator'}) 
         )
         choromap = go.Figure({'data': [data], 'layout': layout})
         choromap.write_image("covid-19map.png")
